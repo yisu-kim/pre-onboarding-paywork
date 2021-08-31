@@ -14,6 +14,7 @@ module.exports = function (api) {
             data: './src/data',
             hooks: './src/hooks',
             screens: './src/screens',
+            services: './src/services',
             store: './src/store',
             styles: './src/styles',
             utils: './src/utils',
