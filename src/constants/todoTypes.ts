@@ -4,3 +4,5 @@ export interface ITodo {
   isCheck: boolean;
   createdAt: string;
 }
+
+export type TodoId = ITodo['id'];
