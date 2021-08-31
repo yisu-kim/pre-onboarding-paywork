@@ -6,3 +6,5 @@ export interface ITodo {
 }
 
 export type TodoId = ITodo['id'];
+
+export type partialTodo = Partial<Omit<ITodo, 'id'>>;
