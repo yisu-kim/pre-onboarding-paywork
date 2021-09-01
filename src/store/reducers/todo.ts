@@ -19,11 +19,24 @@ type TodoState = {
   todos: ITodo[];
   status: Status;
   error?: string;
+  nextId: ITodo['id'];
 };
 
 const initialState: TodoState = {
   todos: [],
   status: 'idle',
+  nextId: '0',
+};
+
+const getMaxTodoId = (todos: ITodo[]) => {
+  const { id } = todos.reduce((prev, current) =>
+    Number(prev.id) > Number(current.id) ? prev : current,
+  );
+  return id;
+};
+
+const increaseTodoId = (stringNumber: string) => {
+  return String(Number(stringNumber) + 1);
 };
 
 const todo = (
@@ -32,15 +45,23 @@ const todo = (
 ): TodoState => {
   switch (action.type) {
     case FETCH_SUCCESS:
-      return { todos: action.payload.todos, status: 'success' };
+      return {
+        ...state,
+        todos: action.payload.todos,
+        status: 'success',
+        nextId: increaseTodoId(getMaxTodoId(action.payload.todos)),
+      };
     case ADD_SUCCESS:
       return {
+        ...state,
         todos: [...state.todos, action.payload.todo],
         status: 'success',
+        nextId: increaseTodoId(state.nextId),
       };
     case TOGGLE_SUCCESS:
     case EDIT_SUCCESS:
       return {
+        ...state,
         todos: state.todos.map((todo) => {
           if (todo.id === action.payload.todo.id) {
             return action.payload.todo;
@@ -51,6 +72,7 @@ const todo = (
       };
     case DELETE_SUCCESS:
       return {
+        ...state,
         todos: state.todos.filter((todo) => todo.id !== action.payload.id),
         status: 'success',
       };
