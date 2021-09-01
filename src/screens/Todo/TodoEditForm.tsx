@@ -47,6 +47,7 @@ const TodoEditForm: React.FC<ITodoEditFormProps> = ({
         onChangeText={handleChangeText}
         onSubmitEditing={handleSubmit}
         defaultValue={content}
+        autoFocus={true}
       />
       <CustomButton customStyle={styles.button} handlePress={handleSubmit}>
         <SvgXml
