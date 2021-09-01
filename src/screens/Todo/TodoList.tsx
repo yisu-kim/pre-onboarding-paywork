@@ -20,6 +20,6 @@ export default TodoList;
 
 const styles = StyleSheet.create({
   scrollView: {
-    backgroundColor: 'pink',
+    maxHeight: '70%',
   },
 });
