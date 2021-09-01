@@ -34,7 +34,6 @@ const TodoInputForm: React.FC = () => {
         onChangeText={handleChange}
         onSubmitEditing={handleSubmit}
         defaultValue={content}
-        autoFocus={true}
       />
       <CustomButton customStyle={styles.button} handlePress={handleSubmit}>
         <SvgXml xml={PLUS_ICON_XML} width="100%" height="22" color="white" />
