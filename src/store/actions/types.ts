@@ -1,0 +1,15 @@
+export const FETCH = 'todos/FETCH' as const;
+export const FETCH_SUCCESS = 'todos/FETCH_SUCCESS' as const;
+export const FETCH_FAILURE = 'todos/FETCH_FAILURE' as const;
+export const ADD = 'todos/ADD' as const;
+export const ADD_SUCCESS = 'todos/ADD_SUCCESS' as const;
+export const ADD_FAILURE = 'todos/ADD_FAILURE' as const;
+export const TOGGLE = 'todos/TOGGLE' as const;
+export const TOGGLE_SUCCESS = 'todos/TOGGLE_SUCCESS' as const;
+export const TOGGLE_FAILURE = 'todos/TOGGLE_FAILURE' as const;
+export const EDIT = 'todos/EDIT' as const;
+export const EDIT_SUCCESS = 'todos/EDIT_SUCCESS' as const;
+export const EDIT_FAILURE = 'todos/EDIT_FAILURE' as const;
+export const DELETE = 'todos/DELETE' as const;
+export const DELETE_SUCCESS = 'todos/DELETE_SUCCESS' as const;
+export const DELETE_FAILURE = 'todos/DELETE_FAILURE' as const;
