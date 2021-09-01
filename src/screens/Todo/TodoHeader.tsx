@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import { THEME_COLOR } from 'styles/color';
 import { getDay, getWeekday, getYearAndMonth } from 'utils/date';
 
 const TodoHeader: React.FC = () => {
@@ -19,6 +20,7 @@ export default TodoHeader;
 const styles = StyleSheet.create({
   header: {
     flexDirection: 'row',
+    marginBottom: 20,
   },
   day: {
     width: 50,
@@ -26,11 +28,16 @@ const styles = StyleSheet.create({
     fontSize: 25,
     lineHeight: 50,
     textAlign: 'center',
-    color: 'black',
+    marginRight: 10,
+    borderWidth: 2,
+    borderRadius: 50 / 2,
+    borderColor: THEME_COLOR,
+    color: THEME_COLOR,
   },
   date: {
     flex: 1,
     justifyContent: 'center',
+    color: THEME_COLOR,
   },
 });
 
