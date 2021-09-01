@@ -6,7 +6,8 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "eject": "expo eject",
-    "server": "json-server --watch db.json --id id"
+    "prestart": "json-server --watch db.json --id id &",
+    "preandroid": "json-server --watch db.json --id id &"
   },
   "dependencies": {
     "axios": "^0.21.1",
