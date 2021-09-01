@@ -1,25 +1,36 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { ScrollView, StyleSheet } from 'react-native';
+import {
+  FlatList,
+  ListRenderItemInfo,
+  ScrollView,
+  StyleSheet,
+} from 'react-native';
 import { RootState } from 'store/reducers';
 import TodoItem from './TodoItem';
+import { ITodo } from 'constants/todoTypes';
 
 const TodoList: React.FC = () => {
   const { todos } = useSelector((state: RootState) => state.todo);
 
+  const renderItem = ({ item }: ListRenderItemInfo<ITodo>) => (
+    <TodoItem todo={item} />
+  );
+
   return (
-    <ScrollView style={styles.scrollView}>
-      {todos.map((todo) => (
-        <TodoItem key={todo.id} todo={todo} />
-      ))}
-    </ScrollView>
+    <FlatList
+      style={styles.todoList}
+      data={todos}
+      renderItem={renderItem}
+      keyExtractor={(todo) => todo.id}
+    />
   );
 };
 
 export default TodoList;
 
 const styles = StyleSheet.create({
-  scrollView: {
+  todoList: {
     maxHeight: '70%',
   },
 });
