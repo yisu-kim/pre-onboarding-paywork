@@ -1,4 +1,4 @@
-import { ITodo, partialTodo, TodoId } from 'constants/todoTypes';
+import { ITodo } from 'constants/todoTypes';
 import {
   ADD,
   ADD_FAILURE,
@@ -37,10 +37,17 @@ export const fetchTodosFailure = (error: string) => {
   };
 };
 
-export const addTodo = (todo: ITodo) => {
+export const addTodo = (nextId: ITodo['id'], content: ITodo['content']) => {
   return {
     type: ADD,
-    payload: { todo },
+    payload: {
+      todo: {
+        id: nextId,
+        content,
+        isCheck: false,
+        createdAt: new Date().toISOString(),
+      },
+    },
   };
 };
 
@@ -58,10 +65,10 @@ export const addTodoFailure = (error: string) => {
   };
 };
 
-export const toggleTodo = (id: TodoId, isCheck: partialTodo) => {
+export const toggleTodo = (id: ITodo['id'], isCheck: ITodo['isCheck']) => {
   return {
     type: TOGGLE,
-    payload: { id, isCheck },
+    payload: { id, isCheck: { isCheck } },
   };
 };
 
@@ -79,10 +86,10 @@ export const toggleTodoFailure = (error: string) => {
   };
 };
 
-export const editTodo = (id: TodoId, content: partialTodo) => {
+export const editTodo = (id: ITodo['id'], content: ITodo['content']) => {
   return {
     type: EDIT,
-    payload: { id, content },
+    payload: { id, content: { content } },
   };
 };
 
@@ -100,14 +107,14 @@ export const editTodoFailure = (error: string) => {
   };
 };
 
-export const deleteTodo = (id: TodoId) => {
+export const deleteTodo = (id: ITodo['id']) => {
   return {
     type: DELETE,
     payload: { id },
   };
 };
 
-export const deleteTodoSuccess = (id: TodoId) => {
+export const deleteTodoSuccess = (id: ITodo['id']) => {
   return {
     type: DELETE_SUCCESS,
     payload: { id },

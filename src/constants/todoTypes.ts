@@ -5,6 +5,4 @@ export interface ITodo {
   createdAt: string;
 }
 
-export type TodoId = ITodo['id'];
-
 export type partialTodo = Partial<Omit<ITodo, 'id'>>;

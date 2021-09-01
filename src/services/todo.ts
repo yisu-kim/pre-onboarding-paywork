@@ -1,6 +1,6 @@
 import { AxiosInstance, AxiosResponse } from 'axios';
 import { TODO_URL } from 'constants/todoApi';
-import { ITodo, TodoId, partialTodo } from 'constants/todoTypes';
+import { ITodo, partialTodo } from 'constants/todoTypes';
 
 class TodoService {
   constructor(private httpClient: AxiosInstance) {}
@@ -14,13 +14,13 @@ class TodoService {
   };
 
   patchTodo = (
-    id: TodoId,
+    id: ITodo['id'],
     todo: partialTodo,
   ): Promise<AxiosResponse<ITodo>> => {
     return this.httpClient.patch<ITodo>(`${TODO_URL}/${id}`, { ...todo });
   };
 
-  deleteTodo = (id: TodoId): Promise<AxiosResponse<{}>> => {
+  deleteTodo = (id: ITodo['id']): Promise<AxiosResponse<{}>> => {
     return this.httpClient.delete<{}>(`${TODO_URL}/${id}`);
   };
 }
