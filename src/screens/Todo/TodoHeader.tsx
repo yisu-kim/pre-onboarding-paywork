@@ -6,7 +6,7 @@ import { getDay, getWeekday, getYearAndMonth } from 'utils/date';
 const TodoHeader: React.FC = () => {
   return (
     <View style={styles.header}>
-      <Text style={styles.day}>{getDay(today).slice(0, -1)}</Text>
+      <Text style={styles.day}>{getDay(today)}</Text>
       <View style={styles.date}>
         <Text>{getWeekday(today)}</Text>
         <Text>{getYearAndMonth(today)}</Text>
@@ -41,4 +41,4 @@ const styles = StyleSheet.create({
   },
 });
 
-const today = new Date().toISOString();
+const today = new Date();
