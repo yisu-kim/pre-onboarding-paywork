@@ -6,7 +6,7 @@ import { getDay, getWeekday, getYearAndMonth } from 'utils/date';
 const TodoHeader: React.FC = () => {
   return (
     <View style={styles.header}>
-      <Text style={styles.day}>{getDay(today)}</Text>
+      <Text style={styles.day}>{getDayNumber(getDay(today))}</Text>
       <View style={styles.date}>
         <Text>{getWeekday(today)}</Text>
         <Text>{getYearAndMonth(today)}</Text>
@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
     width: 50,
     height: 50,
     fontSize: 25,
-    lineHeight: 50,
+    lineHeight: 46,
     textAlign: 'center',
     marginRight: 10,
     borderWidth: 2,
@@ -42,3 +42,7 @@ const styles = StyleSheet.create({
 });
 
 const today = new Date();
+
+const getDayNumber = (daystring: string) => {
+  return daystring.replace(/[^\d+]/g, '');
+};
