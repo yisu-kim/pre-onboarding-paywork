@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { View, StyleSheet, TextInput, Keyboard, Platform } from 'react-native';
-import { SvgUri, SvgXml } from 'react-native-svg';
+import { SvgXml } from 'react-native-svg';
 import { ITodo } from 'constants/todoTypes';
 import { addTodo } from 'store/actions/todo';
 import { RootState } from 'store/reducers';
@@ -34,7 +34,7 @@ const TodoInputForm: React.FC = () => {
         placeholder="할 일을 입력해주세요."
         onChangeText={handleChange}
         onSubmitEditing={handleSubmit}
-        defaultValue={content}
+        value={content}
       />
       <CustomButton customStyle={styles.button} handlePress={handleSubmit}>
         {isWeb ? (
