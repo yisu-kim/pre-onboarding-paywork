@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { View, StyleSheet, TextInput, Keyboard } from 'react-native';
-import { SvgXml } from 'react-native-svg';
+import { View, StyleSheet, TextInput, Keyboard, Platform } from 'react-native';
+import { SvgUri, SvgXml } from 'react-native-svg';
 import { ITodo } from 'constants/todoTypes';
 import { addTodo } from 'store/actions/todo';
 import { RootState } from 'store/reducers';
@@ -9,6 +9,7 @@ import { PLUS_ICON_XML } from 'constants/buttonIcons';
 import { THEME_COLOR } from 'styles/color';
 import CustomButton from 'components/button';
 
+const isWeb = Platform.OS === 'web';
 type TodoContent = ITodo['content'];
 
 const TodoInputForm: React.FC = () => {
@@ -36,7 +37,24 @@ const TodoInputForm: React.FC = () => {
         defaultValue={content}
       />
       <CustomButton customStyle={styles.button} handlePress={handleSubmit}>
-        <SvgXml xml={PLUS_ICON_XML} width="100%" height="22" color="white" />
+        {isWeb ? (
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+            role="img"
+            width="1em"
+            height="1em"
+            preserveAspectRatio="xMidYMid meet"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M19 11h-6V5a1 1 0 0 0-2 0v6H5a1 1 0 0 0 0 2h6v6a1 1 0 0 0 2 0v-6h6a1 1 0 0 0 0-2z"
+              fill="white"
+            />
+          </svg>
+        ) : (
+          <SvgXml xml={PLUS_ICON_XML} width="100%" height="22" color="white" />
+        )}
       </CustomButton>
     </View>
   );
@@ -55,9 +73,12 @@ const styles = StyleSheet.create({
     borderBottomColor: THEME_COLOR,
   },
   button: {
+    display: 'flex',
+    alignItems: 'center',
     paddingVertical: 10,
     marginVertical: 10,
     marginHorizontal: 5,
     backgroundColor: THEME_COLOR,
+    color: 'white',
   },
 });
