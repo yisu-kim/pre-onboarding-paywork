@@ -245,15 +245,9 @@ To serve the app:
 yarn run android
 ```
 
-안드로이드 에뮬레이터와 mock server(port 3000)가 실행되는 로컬 호스트 연결
-
-```sh
-adb reverse tcp:3000 tcp:3000
-```
-
 ## Features
 
-- json-server로 mock 서버 구성
+- My JSON Server로 [mock 서버](https://my-json-server.typicode.com/yisu-kim/pre-onboarding-paywork/) 구성
 - Todo REST API 구현
   - Todo 생성
     ```
