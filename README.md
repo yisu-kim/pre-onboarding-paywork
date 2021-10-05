@@ -9,6 +9,9 @@
   
   <p align="center">
     프리온보딩 코스 Paywork 기업 과제
+    <br />
+    <br />
+    <a href="https://paywork-todo-app.netlify.app/">View Web Demo</a>
   </p>
 </p>
 
@@ -270,3 +273,7 @@ adb reverse tcp:3000 tcp:3000
     ```
 - redux로 전역 상태 관리
 - redux saga 미들웨어로 mock 서버와 비동기 작업 처리
+
+## Additional Features
+
+- 데모 확인을 쉽게 하기 위해 웹 배포
